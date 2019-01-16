@@ -9,8 +9,8 @@ class NavBar extends React.Component {
 
     render(){
         return(
-            <div className="main-nav">
-                <ul className="link-list-x">
+            <div className="nav-bar">
+                <ul>
                     <li>
                         <Link 
                             className="button hover-border"
