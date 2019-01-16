@@ -1,0 +1,34 @@
+{
+    "projects" : {
+        "proj-0" : {
+            "name" : "Fireweed Logo Design",
+            "description" : "Logo Design for Fireweed collaborative",
+            "featuredImage" : "",
+            "category" : "illustration",
+            "tags" : ["illustration", "logo design"],
+            "gallery" : []
+        }
+    },
+    "artworks" : {
+        "art-0" : {
+            "projects" : ["proj-0"],
+            "caption" : "Fireweed Collaborative Logo",
+            "description" : "Logo Design for Fireweed collaborative",
+            "tags" : ["illustration", "logo design"],
+            "images" : {
+                "previewImage" : {
+                    "url" : "",
+                    "altText" : ""
+                },
+                "normalImage" : {
+                    "url" : "",
+                    "altText" : ""
+                },
+                "largeImage" : {
+                    "url" : "",
+                    "altText" : ""
+                }
+            }
+        }
+    }
+}

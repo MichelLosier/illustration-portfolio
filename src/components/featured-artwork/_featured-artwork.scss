@@ -1,0 +1,18 @@
+@import '../../stylesheets/variables';
+
+.featured-artwork{
+    .image-container{
+        width: 50%;
+        min-width: 300px;
+        margin: auto;
+        padding: 5rem 2rem 2rem 2rem;
+        
+    }
+    .caption{
+        font-style: italic;
+    }
+
+    img{
+        border: 1px solid $color-warm-grey;
+    }
+}
