@@ -6,18 +6,51 @@ import Image from '../image/image.component';
 
 
 class FeaturedArtwork extends React.Component {
-    constructor(){
-        super();
+    constructor(props){
+        super(props);
+        this.state = {
+            featuredArtwork: null
+        }
     }
 
     static propTypes = {
-        artwork: PropTypes.object
+        artworks: PropTypes.array,
+        projects: PropTypes.array,
+    }
+
+    componentWillMount = () => {
+        console.log(this.props)
+        this.setRandomArtwork(this.props.artworks);
+    }
+
+    setRandomArtwork = (artworks) => {
+        const index = this.getRandomArtworkIndex(artworks);
+        const featuredArtwork = artworks[index];
+
+        this.setState({
+            featuredArtwork: featuredArtwork,
+        })
+    }
+
+    getRandomArtworkIndex = (artworks) => {
+        const randomDecimalIndex = Math.random() * artworks.length
+        const intIndex = Math.floor(randomDecimalIndex);
+        return intIndex;
+    }
+
+    getProjectFromArtwork = (artwork) => {
+        const {projects} = this.props;
+        const index = projects.findIndex((project) => {
+            return project._id == artwork.projects[0];
+        })
+        return projects[index];
     }
 
     render(){
-        const {artwork} = this.props;
-        const featuredImage = artwork.images.largeImage;
-
+        const {featuredArtwork} = this.state;
+        const assocProject = this.getProjectFromArtwork(featuredArtwork);
+        const featuredImage = featuredArtwork.images.largeImage;
+        console.log(featuredArtwork);
         return(
             <div className="featured-artwork">
                 <div className="image-container">
@@ -27,7 +60,12 @@ class FeaturedArtwork extends React.Component {
                     />
                 </div>
                 <div className="featured-information">
-                    <p className="caption">{artwork.caption}</p>
+                    <p>
+                        <span className="caption">
+                            {featuredArtwork.caption}
+                        </span>
+                        {(assocProject.category == "comics") && ` from ${assocProject.name}`}
+                    </p>
                 </div>
             </div>
         )
