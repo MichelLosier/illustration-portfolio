@@ -13,28 +13,42 @@ class Main extends React.Component {
         super();
         this.state = {
             artworks:[],
-            featuredArtworkIndex: null,
+            projects:[],
         }
     }
 
-    componentDidMount = () =>{
-        staticResourceService.getArtworks().then((artworks) => {
-            const featuredArtworkIndex = this.pickRandomArtworkIndex(artworks);
+    componentWillMount = () =>{
+        this.fetchStaticData().then((staticData) => {
+
             this.setState({
-                artworks: artworks,
-                featuredArtworkIndex: featuredArtworkIndex,
+                artworks: staticData.artworks,
+                projects: staticData.projects,
             })
         })
     }
 
-    pickRandomArtworkIndex = (artworkArray) => {
-        const  randomDecimalIndex = Math.random() * artworkArray.length
-        const intIndex = Math.floor(randomDecimalIndex);
-        return intIndex;
+    fetchStaticData = () => {
+        return new Promise((resolve, reject) => {
+            const staticData = {
+                artworks:[],
+                projects:[],
+            }
+
+            staticResourceService.getArtworks().then((artworks) => {
+                staticData.artworks = artworks;
+                return staticResourceService.getProjects();
+            }).then((projects) => {
+                staticData.projects = projects;
+                resolve(staticData);
+            }).catch((err) => {
+                reject(err);
+            })
+        })
     }
 
+
     render(){
-        const {artworks, featuredArtworkIndex} = this.state;
+        const {artworks, projects} = this.state;
         return(
             <div className="main">
                 <div className="main-header">
@@ -51,7 +65,12 @@ class Main extends React.Component {
                         render={() => {
                             return(
                                 <div>
-                                    {(artworks.length > 0) && <FeaturedArtwork artwork={artworks[featuredArtworkIndex]} />}
+                                    {(artworks.length > 0 && projects.length > 0) &&
+                                        <FeaturedArtwork 
+                                            artworks={artworks}
+                                            projects={projects}
+                                        />
+                                    }
                                 </div>
                             )
                         }}
