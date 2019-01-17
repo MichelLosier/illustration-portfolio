@@ -1,0 +1,32 @@
+@import '../../stylesheets/variables';
+
+.project-selection{
+    padding-top:2rem;
+    .list-container{
+        ul {
+            margin:0;
+            padding:0;
+            display: flex;
+            flex-flow: row;
+            flex-wrap: wrap;
+            justify-content:center;
+            box-sizing: border-box;
+            li {
+                margin: 1rem;
+                border: 1px solid $color-primary-olive;
+                list-style: none;
+                flex-grow: 0;
+                box-shadow: 1px 1px 8px $color-drop-shadow;
+
+                &.selected {
+                    border: 1px solid $color-highlight-olive;
+                }
+        
+                &:hover {
+                    border: 1px solid $color-highlight-olive;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

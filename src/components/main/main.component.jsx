@@ -3,6 +3,7 @@ import { Route, Link } from 'react-router-dom'
 
 import NavBar from '../nav-bar/nav-bar.component'
 import FeaturedArtwork from '../featured-artwork/featured-artwork.component';
+import ProjectSelection from '../project-selection/project-selection.component';
 
 import StaticResourceService from '../../services/staticResourceService';
 
@@ -48,7 +49,7 @@ class Main extends React.Component {
 
 
     render(){
-        const {artworks, projects} = this.state;
+        const {artworks, projects, selectedProject} = this.state;
         return(
             <div className="main">
                 <div className="main-header">
@@ -81,10 +82,15 @@ class Main extends React.Component {
                     />
                     <Route
                         path="/projects/:category"
-                        render={null}
+                        render={({match}) => {
+                            return(<ProjectSelection
+                                projects={projects}
+                                category={match.params.category}
+                            />)
+                        }}
                     />
                     <Route
-                        path="/projects/detail/:id"
+                        path="/projects/:id"
                         render={null}
                     />
                 </div>
