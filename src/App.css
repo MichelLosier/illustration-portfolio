@@ -1,4 +1,16 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400|Josefin+Slab");
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
 .App {
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
@@ -20,12 +32,37 @@
       cursor: pointer;
       color: #D4C134; }
 
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
 .main .main-header {
   padding: 2rem 2rem 0rem 2rem;
   border-bottom: 1px solid #63614B; }
 
 .main .main-body {
-  padding-bottom: 2rem; }
+  padding-bottom: 2rem;
+  background-color: #f5f4f1; }
 
 .nav-bar ul {
   padding: 0;
@@ -36,24 +73,24 @@
   align-items: stretch;
   list-style-type: none; }
   .nav-bar ul li {
-    padding: .5rem .5rem .25rem .5rem;
-    display: inline-block;
-    border-bottom: .25rem solid transparent; }
-    .nav-bar ul li:hover {
+    display: inline-block; }
+    .nav-bar ul li:hover a {
       cursor: pointer;
       color: #D4C134;
       border-bottom: 0.25rem solid #D4C134;
+      box-sizing: border-box;
+      padding-bottom: 0px; }
+    .nav-bar ul li a,
+    .nav-bar ul li p {
+      height: 3rem;
+      border-bottom: .25rem solid transparent;
+      padding: 1rem;
+      padding-bottom: .75rem;
+      display: inline-block;
       box-sizing: border-box; }
-    .nav-bar ul li.active {
-      border-bottom: 0.25rem solid #D4C134;
-      box-sizing: border-box; }
-      .nav-bar ul li.active a {
-        color: #D4C134; }
-  .nav-bar ul a,
-  .nav-bar ul p {
-    padding: 1rem;
-    display: inline-block;
-    box-sizing: border-box; }
+    .nav-bar ul li a.active {
+      color: #D4C134;
+      border-bottom: 0.25rem solid #D4C134; }
 
 .image {
   display: block;
@@ -63,6 +100,18 @@
   /*default*/
   width: auto;
   margin: 0 auto; }
+
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
 
 .featured-artwork .image-container {
   width: 50%;
@@ -75,3 +124,81 @@
 
 .featured-artwork img {
   border: 1px solid #63614B; }
+
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
+.project-selection {
+  padding-top: 2rem; }
+  .project-selection .list-container ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-sizing: border-box; }
+    .project-selection .list-container ul li {
+      margin: 1rem;
+      border: 1px solid #AB9E39;
+      list-style: none;
+      flex-grow: 0;
+      box-shadow: 1px 1px 8px #c5c5c5; }
+      .project-selection .list-container ul li.selected {
+        border: 1px solid #D4C134; }
+      .project-selection .list-container ul li:hover {
+        border: 1px solid #D4C134;
+        cursor: pointer; }
+
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
+.project-card {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: white;
+  min-width: 150px;
+  min-height: 150px;
+  height: 400px;
+  overflow: hidden; }
+  .project-card .project-detail {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: rgba(41, 40, 32, 0.95);
+    width: 100%;
+    height: 100%;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 2; }
+    .project-card .project-detail a {
+      border: 1px solid #AB9E39;
+      color: #AB9E39;
+      padding: 1rem;
+      max-width: 250px; }
+      .project-card .project-detail a:hover {
+        border: 1px solid #D4C134;
+        color: #D4C134; }

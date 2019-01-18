@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Route, Link } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 
 class NavBar extends React.Component {
     constructor(){
@@ -12,22 +12,25 @@ class NavBar extends React.Component {
             <div className="nav-bar">
                 <ul>
                     <li>
-                        <Link 
+                        <NavLink 
                             className="button hover-border"
+                            activeClassName="active"
                             to={`/about`}
-                        >about</Link>
+                        >about</NavLink>
                     </li>
                     <li>
-                        <Link 
+                        <NavLink 
                             className="button hover-border"
-                            to={`/projects/illustration`}
-                        >illustration</Link>
-                    </li>
-                    <li>
-                        <Link 
-                            className="button hover-border"
+                            activeClassName="active"
                             to={`/projects/comics`}
-                        >comics</Link>
+                        >comics</NavLink>
+                    </li>
+                    <li>
+                        <NavLink 
+                            className="button hover-border"
+                            activeClassName="active"
+                            to={`/projects/illustration`}
+                        >illustration</NavLink>
                     </li>
                 </ul>
             </div>

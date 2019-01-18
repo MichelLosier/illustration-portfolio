@@ -1,10 +1,30 @@
-
-
 // https://color.adobe.com/cloud/aHR0cHM6Ly9jYy1hcGktYXNzZXRzLmFkb2JlLmlv/library/59538670-09a8-11e5-ba4e-ad50f69760b0/theme/587deb6a-00c4-46ea-b30c-91f4c02330b7/
 
 $color-dark-grey: #292820;
+$color-dark-grey-transparent: rgba(41,40,32,0.95);
 $color-primary-olive: #AB9E39;
 $color-highlight-olive: #D4C134;
 $color-warm-grey: #63614B;
 $color-light-grey: #f5f4f1;
+$color-drop-shadow: #c5c5c5;
 $color-white: white;
+
+@keyframes slide-in {
+    from {
+        margin-left:100%;
+    }
+
+    to {
+        margin-left: 0;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0%;
+    }
+
+    to {
+        opacity: 100%
+    }
+}

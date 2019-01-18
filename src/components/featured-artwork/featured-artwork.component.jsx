@@ -19,7 +19,6 @@ class FeaturedArtwork extends React.Component {
     }
 
     componentWillMount = () => {
-        console.log(this.props)
         this.setRandomArtwork(this.props.artworks);
     }
 
@@ -50,7 +49,7 @@ class FeaturedArtwork extends React.Component {
         const {featuredArtwork} = this.state;
         const assocProject = this.getProjectFromArtwork(featuredArtwork);
         const featuredImage = featuredArtwork.images.largeImage;
-        console.log(featuredArtwork);
+
         return(
             <div className="featured-artwork">
                 <div className="image-container">
