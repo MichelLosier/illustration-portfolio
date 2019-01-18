@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import NavBar from '../nav-bar/nav-bar.component'
 import FeaturedArtwork from '../featured-artwork/featured-artwork.component';
 import ProjectSelection from '../project-selection/project-selection.component';
+import ProjectDetail from '../project-detail/project-detail.component';
 
 import StaticResourceService from '../../services/staticResourceService';
 
@@ -47,9 +48,16 @@ class Main extends React.Component {
         })
     }
 
+    getProjectFromId = (projects, id) => {
+        const index = projects.findIndex((project) => {
+            return project._id == id
+        })
+        return projects[index];
+    }
+
 
     render(){
-        const {artworks, projects, selectedProject} = this.state;
+        const {artworks, projects} = this.state;
         return(
             <div className="main">
                 <div className="main-header">
@@ -81,6 +89,7 @@ class Main extends React.Component {
                         render={null}
                     />
                     <Route
+                        exact={true}
                         path="/projects/:category"
                         render={({match}) => {
                             return(<ProjectSelection
@@ -90,11 +99,22 @@ class Main extends React.Component {
                         }}
                     />
                     <Route
-                        path="/projects/:id"
-                        render={null}
+                        path="/projects/:category/:_id"
+                        render={({match}) => {
+                            const project = this.getProjectFromId(projects, match.params._id);
+                            return(
+                                <div>
+                                {projects.length > 0 && <ProjectDetail
+                                    project={project}
+                                />}
+                                </div>
+                            )
+
+                        }}
                     />
                 </div>
                 <div className="main-footer layout-container">
+                    Art and Site Design &copy; {new Date().getFullYear()} Michel Losier
                 </div>
             </div>
         )

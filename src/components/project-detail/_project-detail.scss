@@ -1,0 +1,48 @@
+@import '../../stylesheets/variables';
+
+.project-detail{
+    padding-top:2rem;
+    h2 {
+        margin: 0rem auto 2rem auto;
+        padding: 1rem 2rem;
+        width: fit-content;
+        //border-bottom: 1px solid $color-dark-grey;
+    }
+    .artwork-navigation-container {
+        display:flex;
+        justify-content: space-around;
+        .image-container{
+            margin: 2rem auto;
+            max-width: 60%;
+            border: 1px solid $color-dark-grey;
+            min-width: 300px;
+
+            &:hover{
+                cursor:pointer;
+            }
+        }
+        .navigation-paddle{
+            display:flex;
+            align-items: center;
+            color: $color-primary-olive;
+            font-size: 4rem;
+            width: 10%;
+            min-width:10%;
+            justify-content:center;
+
+            &.visible:hover{
+                color: $color-highlight-olive;
+                background-color: $color-light-grey-transparent;
+                cursor:pointer;
+            }
+        }
+    }
+
+    .caption{
+        margin: 2rem auto 2rem auto;
+        padding: 1rem;
+        font-style: italic;
+        width: fit-content;
+        //border-top: 1px solid $color-dark-grey;
+    }
+}
