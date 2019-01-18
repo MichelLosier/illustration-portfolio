@@ -176,6 +176,8 @@
   align-items: center;
   position: relative;
   background-color: white;
+  min-width: 150px;
+  min-height: 150px;
   height: 400px;
   overflow: hidden; }
   .project-card .project-detail {
@@ -192,3 +194,11 @@
     top: 0px;
     left: 0px;
     z-index: 2; }
+    .project-card .project-detail a {
+      border: 1px solid #AB9E39;
+      color: #AB9E39;
+      padding: 1rem;
+      max-width: 250px; }
+      .project-card .project-detail a:hover {
+        border: 1px solid #D4C134;
+        color: #D4C134; }

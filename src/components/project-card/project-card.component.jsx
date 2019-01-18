@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Image from '../image/image.component';
@@ -34,6 +34,11 @@ class ProjectCard extends React.Component {
             <div className="project-detail">
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
+                <Link
+                    to={`/projects/${project._id}`}
+                >
+                view
+                </Link>
             </div>
         )
     }
