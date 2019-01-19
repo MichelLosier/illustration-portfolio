@@ -11,6 +11,36 @@
     .artwork-navigation-container {
         display:flex;
         justify-content: space-around;
+        
+        &.shadow-box {
+            padding:2rem 0rem;
+            width: 100vw;
+            min-height: 100vh;
+            height: fit-content;
+            top: 0px;
+            left: 0px;
+            z-index: 99;
+            position: absolute;
+            background:$color-dark-grey-transparent;
+            align-items:center;
+
+            div.cancel{
+                font-size: 3rem;
+                font-weight: normal;
+                width: 3rem;
+                border-radius: 50%;
+                border: 3px solid $color-white;
+                height: 3rem;
+                cursor: pointer;
+                line-height: 2.8rem;
+                color:$color-white;
+                position: absolute;
+                right: 30px;
+                top: 10px;
+                z-index:3;
+            }
+        }
+
         .image-container{
             margin: 2rem auto;
             max-width: 60%;

@@ -9,6 +9,7 @@ class ProjectDetail extends React.Component{
         super(props)
         this.state = {
             currentIndex: 0,
+            showShadowBox: false,
         }
     }
     static propTypes = {
@@ -28,11 +29,18 @@ class ProjectDetail extends React.Component{
         })
     }
 
+    handleImageClick = (bool) => {
+        this.setState({
+            showShadowBox: bool,
+        })
+    }
+
     render(){
         const {project} = this.props;
-        const {currentIndex} = this.state;
+        const {currentIndex, showShadowBox} = this.state;
         const currentArtwork = project.gallery[currentIndex];
         const currentArtworkImage = currentArtwork.images.largeImage;
+        const shadowBoxClass = (showShadowBox) ? "shadow-box" : "";
 
         const showLeft = currentIndex > 0;
         const showRight = (currentIndex < (project.gallery.length-1)) && (project.gallery.length > 0);
@@ -40,14 +48,27 @@ class ProjectDetail extends React.Component{
         return(
             <div className="project-detail">
                 <h2>{project.name}</h2>
-                <div className="artwork-navigation-container">
+                <div className={"artwork-navigation-container " + shadowBoxClass}>
+                    {
+                        showShadowBox && 
+                        <div 
+                            className="cancel"
+                            onClick={() => {this.handleImageClick(false)}}
+                        >
+                            x
+                        </div>
+                    }
+
                     <div 
                         className={(showLeft) ? `visible navigation-paddle left` : `navigation-paddle left`}
                         onClick={()=>{this.handleNavigationPaddleClick(-1)}}
                     >
                         {showLeft && <p>&lt;</p>}
                     </div>
-                    <div className="image-container">
+                    <div 
+                        className="image-container"
+                        onClick={() => {this.handleImageClick(true)}}
+                    >
                         <Image
                             url={currentArtworkImage.url}
                             altText={currentArtworkImage.altText}
