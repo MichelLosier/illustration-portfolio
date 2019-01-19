@@ -96,6 +96,31 @@
       color: #D4C134;
       border-bottom: 0.25rem solid #D4C134; }
 
+@keyframes slide-in {
+  from {
+    margin-left: 100%; }
+  to {
+    margin-left: 0; } }
+
+@keyframes fade-in {
+  from {
+    opacity: 0%; }
+  to {
+    opacity: 100%; } }
+
+.about-view {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 70vh;
+  padding: 2rem; }
+  .about-view .about-content {
+    background-color: white;
+    border: 1px solid #292820;
+    padding: 2rem;
+    width: 60%; }
+
 .image {
   display: block;
   max-width: 100%;

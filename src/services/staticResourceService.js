@@ -23,6 +23,14 @@ class StaticResourceService {
         })
         return http(request)
     }
+
+    getConfiguration = () => {
+        const request = new Request('/static-data/configuration.json', {
+            method: 'GET',
+            headers: this.baseHeaders,
+        })
+        return http(request)
+    }
 }
 
 export default StaticResourceService;
