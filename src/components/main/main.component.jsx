@@ -4,6 +4,8 @@ import { Route, Link } from 'react-router-dom'
 import NavBar from '../nav-bar/nav-bar.component'
 import FeaturedArtwork from '../featured-artwork/featured-artwork.component';
 import ProjectSelection from '../project-selection/project-selection.component';
+import ProjectDetail from '../project-detail/project-detail.component';
+import AboutView from '../about-view/about-view.component';
 
 import StaticResourceService from '../../services/staticResourceService';
 
@@ -15,6 +17,7 @@ class Main extends React.Component {
         this.state = {
             artworks:[],
             projects:[],
+            configuration: null,
         }
     }
 
@@ -24,32 +27,36 @@ class Main extends React.Component {
             this.setState({
                 artworks: staticData.artworks,
                 projects: staticData.projects,
+                configuration: staticData.configuration,
             })
         })
     }
 
-    fetchStaticData = () => {
-        return new Promise((resolve, reject) => {
-            const staticData = {
-                artworks:[],
-                projects:[],
-            }
 
-            staticResourceService.getArtworks().then((artworks) => {
-                staticData.artworks = artworks;
-                return staticResourceService.getProjects();
-            }).then((projects) => {
-                staticData.projects = projects;
-                resolve(staticData);
-            }).catch((err) => {
-                reject(err);
-            })
+    fetchStaticData = () => {
+        return Promise.all([
+            staticResourceService.getArtworks(),
+            staticResourceService.getProjects(),
+            staticResourceService.getConfiguration(),
+        ]).then((data) => {
+            return {
+                artworks: data[0],
+                projects: data[1],
+                configuration: data[2],
+            }
         })
+    }
+
+    getProjectFromId = (projects, id) => {
+        const index = projects.findIndex((project) => {
+            return project._id == id
+        })
+        return projects[index];
     }
 
 
     render(){
-        const {artworks, projects, selectedProject} = this.state;
+        const {artworks, projects, configuration} = this.state;
         return(
             <div className="main">
                 <div className="main-header">
@@ -78,9 +85,20 @@ class Main extends React.Component {
                     />
                     <Route
                         path="/about"
-                        render={null}
+                        render={() => {
+                            return(
+                                <div>
+                                {configuration &&
+                                    <AboutView
+                                    content={configuration.about}
+                                    />
+                                }
+                                </div>
+                            )
+                        }}
                     />
                     <Route
+                        exact={true}
                         path="/projects/:category"
                         render={({match}) => {
                             return(<ProjectSelection
@@ -90,11 +108,22 @@ class Main extends React.Component {
                         }}
                     />
                     <Route
-                        path="/projects/:id"
-                        render={null}
+                        path="/projects/:category/:_id"
+                        render={({match}) => {
+                            const project = this.getProjectFromId(projects, match.params._id);
+                            return(
+                                <div>
+                                {projects.length > 0 && <ProjectDetail
+                                    project={project}
+                                />}
+                                </div>
+                            )
+
+                        }}
                     />
                 </div>
                 <div className="main-footer layout-container">
+                    Art and Site Design &copy; {new Date().getFullYear()} Michel Losier
                 </div>
             </div>
         )

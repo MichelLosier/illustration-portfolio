@@ -35,7 +35,7 @@ class ProjectCard extends React.Component {
                 <h3>{project.name}</h3>
                 <p>{project.description}</p>
                 <Link
-                    to={`/projects/${project._id}`}
+                    to={`/projects/${project.category}/${project._id}`}
                 >
                 view
                 </Link>

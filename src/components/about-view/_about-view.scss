@@ -1,0 +1,17 @@
+@import '../../stylesheets/variables';
+
+.about-view{
+    display: flex;
+    align-content: center;
+    align-items:center;
+    justify-content: space-around;
+    min-height: 70vh;
+    padding: 2rem;
+    .about-content{
+        background-color: $color-white;
+        border: 1px solid $color-dark-grey;
+        padding: 2rem;
+        width:60%;
+    }
+
+}
